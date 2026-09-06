@@ -27,18 +27,18 @@ export class Vehiculo {
 
 export class Auto extends Vehiculo {
     acelerar(): void {
-        console.log(`${this.marca} ${this.modelo} (auto de otra época) acelera: se le escapa el almanaque y el aceite`);
+        console.log(`${this.marca} ${this.modelo}  acelera: se le escapa el almanaque y el aceite`);
     }
 }
 
 export class Moto extends Vehiculo {
     acelerar(): void {
-        console.log(`${this.marca} ${this.modelo} (la moto del barrio) sale a fondo: ruido de lata y cero casco`);
+        console.log(`${this.marca} ${this.modelo} sale a fondo: ruido de lata y cero casco`);
     }
 }
 
 export class Camion extends Vehiculo {
     acelerar(): void {
-        console.log(`${this.marca} ${this.modelo} (camión cargado de promesas) arranca lento pero no para ni en la aduana`);
+        console.log(`${this.marca} ${this.modelo} arranca lento pero no para ni en la aduana`);
     }
 }
