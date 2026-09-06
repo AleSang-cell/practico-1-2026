@@ -1,5 +1,3 @@
-import { N } from "vitest/dist/chunks/reporters.nr4dxCkA.js";
-
 /**
  * EJERCICIO 11 - Clase Cuenta
  * ---------------------------------------------------------------------------
