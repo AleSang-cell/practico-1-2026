@@ -12,8 +12,8 @@
 // -----------------------------------------------------------------------------
 // EJERCICIO 10 - interface Materia
 // -----------------------------------------------------------------------------
-//TODO cambiar a type
-export interface Materia {
+
+export type Materia = {
     codigo: number;
     nombre: string;
     horas: number;
@@ -82,29 +82,30 @@ export class Alumno {
     // -------------------------------------------------------------------
 
     agregarMateria(materia: Materia): void {
-        // TODO
-        throw new Error("Implementar");
+        this.materias.push(materia);
     }
 
     quitarMateria(codigo: number): Materia | undefined {
-        // TODO: quitar la materia con ese código y devolverla.
-        // Si no está inscripto en ninguna con ese código, devolver undefined.
-        throw new Error("Implementar");
+        const indice = this.materias.findIndex(
+            (m) => m.codigo === codigo
+        );
+
+        if (indice === -1) {
+            return undefined;
+        }
+
+        return this.materias.splice(indice, 1)[0];
     }
 
     estaInscripto(codigo: number): boolean {
-        // TODO
-        throw new Error("Implementar");
+        return this.materias.some((m) => m.codigo === codigo);   
     }
 
     cantidadMaterias(): number {
-        // TODO
-        throw new Error("Implementar");
+        return this.materias.length;
     }
 
     getMaterias(): Materia[] {
-        // TODO: devolver las materias sin exponer el arreglo interno
-        // (devolver una copia, no la referencia original).
-        throw new Error("Implementar");
+        return [...this.materias];
     }
 }
