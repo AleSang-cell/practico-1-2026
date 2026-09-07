@@ -136,8 +136,7 @@ export function todosAprobaron(alumnos: Alumno[]): boolean {
 // Devolver la cantidad de alumnos aprobados.
 // Resolver utilizando filter y length.
 export function cantidadAprobados(alumnos: Alumno[]): number {
-    // TODO
-    throw new Error("Implementar");
+    return alumnos.filter((alumno) => alumno.nota >= 6).length;
 }
 
 // -----------------------------------------------------------------------------
@@ -146,8 +145,7 @@ export function cantidadAprobados(alumnos: Alumno[]): number {
 // Calcular la suma de las edades de todos los alumnos.
 // Resolver utilizando reduce.
 export function sumarEdades(alumnos: Alumno[]): number {
-    // TODO
-    throw new Error("Implementar");
+    return alumnos.reduce((acc, alumno) => acc + alumno.edad, 0);
 }
 
 // -----------------------------------------------------------------------------
@@ -158,8 +156,7 @@ export function obtenerAlumnosDeCiudad(
     alumnos: Alumno[],
     ciudad: string
 ): Alumno[] {
-    // TODO
-    throw new Error("Implementar");
+    return alumnos.filter((alumno) => alumno.ciudad === ciudad);
 }
 
 // -----------------------------------------------------------------------------
@@ -173,8 +170,8 @@ export function calcularPromedioPorCiudad(
     alumnos: Alumno[],
     ciudad: string
 ): number {
-    // TODO
-    throw new Error("Implementar");
+    const deLaCiudad = obtenerAlumnosDeCiudad(alumnos, ciudad);
+    return calcularPromedio(deLaCiudad);
 }
 
 // -----------------------------------------------------------------------------
@@ -190,8 +187,7 @@ export function transformar<T, R>(
     elementos: T[],
     callback: (elemento: T) => R
 ): R[] {
-    // TODO
-    throw new Error("Implementar");
+    return elementos.map((elemento) => callback(elemento));
 }
 
 // -----------------------------------------------------------------------------
@@ -207,8 +203,7 @@ export function filtrar<T>(
     elementos: T[],
     callback: (elemento: T) => boolean
 ): T[] {
-    // TODO
-    throw new Error("Implementar");
+    return elementos.filter((elemento) => callback(elemento));
 }
 
 // -----------------------------------------------------------------------------
@@ -222,8 +217,7 @@ export function buscar<T>(
     elementos: T[],
     callback: (elemento: T) => boolean
 ): T | undefined {
-    // TODO
-    throw new Error("Implementar");
+    return elementos.find((elemento) => callback(elemento));
 }
 
 // -----------------------------------------------------------------------------
@@ -239,8 +233,7 @@ export function calcularTotal(
     alumnos: Alumno[],
     callback: (alumno: Alumno) => number
 ): number {
-    // TODO
-    throw new Error("Implementar");
+    return alumnos.reduce((acc, alumno) => acc + callback(alumno), 0);
 }
 
 // -----------------------------------------------------------------------------
@@ -261,8 +254,12 @@ export function calcularTotal(
 export function agruparPorCiudad(
     alumnos: Alumno[]
 ): Record<string, Alumno[]> {
-    // TODO
-    throw new Error("Implementar");
+    return alumnos.reduce<Record<string, Alumno[]>>((acc, alumno) => {
+        const grupo = acc[alumno.ciudad] ?? [];
+        grupo.push(alumno);
+        acc[alumno.ciudad] = grupo;
+        return acc;
+    }, {});
 }
 
 // -----------------------------------------------------------------------------
@@ -288,8 +285,14 @@ export interface Estadisticas {
 export function obtenerEstadisticas(
     alumnos: Alumno[]
 ): Estadisticas {
-    // TODO
-    throw new Error("Implementar");
+    const aprobados = cantidadAprobados(alumnos);
+    return {
+        cantidadTotal: alumnos.length,
+        cantidadAprobados: aprobados,
+        cantidadDesaprobados: alumnos.length - aprobados,
+        promedio: calcularPromedio(alumnos),
+        mejorAlumno: obtenerMejorAlumno(alumnos),
+    };
 }
 
 // -----------------------------------------------------------------------------
