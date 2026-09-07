@@ -287,8 +287,14 @@ export interface Estadisticas {
 export function obtenerEstadisticas(
     alumnos: Alumno[]
 ): Estadisticas {
-    // TODO
-    throw new Error("Implementar");
+    const aprobados = cantidadAprobados(alumnos);
+    return {
+        cantidadTotal: alumnos.length,
+        cantidadAprobados: aprobados,
+        cantidadDesaprobados: alumnos.length - aprobados,
+        promedio: calcularPromedio(alumnos),
+        mejorAlumno: obtenerMejorAlumno(alumnos),
+    };
 }
 
 // -----------------------------------------------------------------------------
