@@ -219,7 +219,8 @@ export function buscar<T>(
     elementos: T[],
     callback: (elemento: T) => boolean
 ): T | undefined {
-    return elementos.find((elemento) => callback(elemento));
+    // TODO
+    throw new Error("Implementar");
 }
 
 // -----------------------------------------------------------------------------
