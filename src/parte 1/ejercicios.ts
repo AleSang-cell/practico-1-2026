@@ -170,8 +170,10 @@ export function calcularPromedioPorCiudad(
     alumnos: Alumno[],
     ciudad: string
 ): number {
-    // TODO
-    throw new Error("Implementar");
+    const deLaCiudad = obtenerAlumnosDeCiudad(alumnos, ciudad);
+    if (deLaCiudad.length === 0) return 0;
+    const suma = deLaCiudad.reduce((acc, alumno) => acc + alumno.nota, 0);
+    return suma / deLaCiudad.length;
 }
 
 // -----------------------------------------------------------------------------
