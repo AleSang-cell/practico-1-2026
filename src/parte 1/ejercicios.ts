@@ -66,8 +66,9 @@ export function obtenerAprobados(alumnos: Alumno[]): Alumno[] {
 //
 // Si el arreglo está vacío, devolver 0.
 export function calcularPromedio(alumnos: Alumno[]): number {
-    // TODO
-    throw new Error("Implementar");
+    if (alumnos.length === 0) return 0;
+    const suma = alumnos.reduce((acc, alumno) => acc + alumno.nota, 0);
+    return suma / alumnos.length;
 }
 
 // -----------------------------------------------------------------------------
