@@ -55,8 +55,7 @@ export function obtenerMayoresDeEdad(alumnos: Alumno[]): Alumno[] {
 // Un alumno aprueba cuando su nota es mayor o igual a 6.
 // Devolver los alumnos aprobados.
 export function obtenerAprobados(alumnos: Alumno[]): Alumno[] {
-    // TODO
-    throw new Error("Implementar");
+    return alumnos.filter((alumno) => alumno.nota >= 6);
 }
 
 // -----------------------------------------------------------------------------
